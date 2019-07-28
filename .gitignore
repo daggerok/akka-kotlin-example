@@ -1,2 +1,9 @@
 # Project exclude paths
-/.gradle/
+.gradle/
+build/
+/out/
+*.iml
+*.ipr
+*.iws
+*.log*
+.DS_Store
