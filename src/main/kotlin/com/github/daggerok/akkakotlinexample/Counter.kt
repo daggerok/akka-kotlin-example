@@ -11,7 +11,7 @@ class CounterActor : AbstractActor() {
 
     companion object Factory {
         sealed class Commands {
-            override fun toString(): String = this.javaClass.simpleName
+            override fun toString(): String = javaClass.simpleName
 
             object Increment : Commands()
             object Decrement : Commands()
@@ -25,8 +25,8 @@ class CounterActor : AbstractActor() {
 
     override fun createReceive(): Receive = withCounter(0)
 
-    private fun withCounter(counter: Int): Receive {
-        return receiveBuilder()
+    private fun withCounter(counter: Int): Receive =
+        receiveBuilder()
             .matchAny { cmd ->
                 val response = "current: $counter, received: $cmd"
                 context.system.log().info(response)
@@ -44,7 +44,6 @@ class CounterActor : AbstractActor() {
                 }
             }
             .build()
-    }
 }
 
 object Counter {
