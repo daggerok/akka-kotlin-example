@@ -39,9 +39,7 @@ class CounterActor : AbstractActor() {
                         sender.tell(response, self)
                         context.become(withCounter(counter - 1))
                     }
-                    is GetStatus -> {
-                        sender.tell("current counter: $counter", self)
-                    }
+                    is GetStatus -> sender.tell("current counter: $counter", self)
                     else -> unhandled(cmd)
                 }
             }
